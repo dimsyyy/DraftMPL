@@ -1,4 +1,4 @@
-# DraftMPL
+# DraftMPL V2.0
 
 DraftMPL is a web-based project related to Mobile Legends: Bang Bang (MLBB) hero drafting.
 
