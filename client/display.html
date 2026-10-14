@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draft Pick Display</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="draft-container">
+      <div class="team-section team-left">
+        <div class="top-info">
+          <div class="ban-slots">
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+          </div>
+          <div class="team-name-container">
+            <h2 class="team-name">TEAM NAME</h2>
+          </div>
+        </div>
+        <div class="pick-slots">
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+        </div>
+
+        <div class="player-names">
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+        </div>
+      </div>
+
+      <div class="center-info">
+        <div class="map-selection"></div>
+        <div class="center-panel">
+          <div class="top-scores">
+            <div class="score-group score-left">
+              <div class="score-bar"></div>
+              <div class="score-bar"></div>
+              <div class="score-bar"></div>
+            </div>
+            <div class="score-group score-right">
+              <div class="score-bar"></div>
+              <div class="score-bar"></div>
+              <div class="score-bar"></div>
+            </div>
+          </div>
+          <div class="turn-timers-container">
+            <div class="turn-timer-bar left-bar">
+              <div class="timer-fill"></div>
+            </div>
+            <div class="turn-timer-bar right-bar">
+              <div class="timer-fill"></div>
+            </div>
+          </div>
+          <h3 class="phase-text">PICK PHASE</h3>
+          <div class="main-timer-container">
+            <div class="arrow arrow-left">««</div>
+            <div class="main-timer">50</div>
+            <div class="arrow arrow-right">»»</div>
+          </div>
+        </div>
+      </div>
+      <div class="team-section team-right">
+        <div class="top-info">
+          <div class="team-name-container">
+            <h2 class="team-name">TEAM NAME</h2>
+          </div>
+          <div class="ban-slots">
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+            <div class="slot ban-slot"></div>
+          </div>
+        </div>
+        <div class="pick-slots">
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+          <div class="slot pick-slot"></div>
+        </div>
+        <div class="player-names">
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+          <div class="player-name">PLAYER NAME</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-shuffle">
+      <div class="header">MAP SELECTION</div>
+      <div class="map-container">
+        <div class="triangle-arrow"></div>
+        <div class="map-strip">
+          <div class="map dangerous">
+            <div class="glow-overlay"></div>
+            <img src="assets/images/map/dangerousGrass.jpg" alt="" />
+            <h1 class="map-name">DANGEROUS GRASS</h1>
+          </div>
+          <div class="map broken">
+            <div class="glow-overlay"></div>
+            <img src="assets/images/map/brokenWalls.jpg" alt="" />
+            <h1 class="map-name">BROKEN WALLS</h1>
+          </div>
+          <div class="map expanding">
+            <div class="glow-overlay"></div>
+            <img src="assets/images/map/expandingRiver.jpg" alt="" />
+            <h1 class="map-name">EXPANDING RIVER</h1>
+          </div>
+          <div class="map flying">
+            <div class="glow-overlay"></div>
+            <img src="assets/images/map/flyingCloud.jpg" alt="" />
+            <h1 class="map-name">FLYING CLOUD</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/display.js"></script>
+  </body>
+</html>

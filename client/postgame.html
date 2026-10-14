@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postgame</title>
+    <link rel="stylesheet" href="assets/css/postgame.css" />
+  </head>
+  <body>
+    <video class="background-video" autoplay muted loop>
+      <source src="assets/videos/granger.mp4" type="video/mp4" />
+    </video>
+    <div class="scoreboard">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="team right">
+          <div class="team-name">RRQ HOSHI</div>
+          <div class="status">VICTORY</div>
+          <div class="status glow">VICTORY</div>
+        </div>
+        <div class="center-info">
+          <div class="left">
+            <div class="total-kill-right">20</div>
+            <div class="scores right">
+              <div class="score"></div>
+              <div class="score"></div>
+              <div class="score"></div>
+            </div>
+          </div>
+          <div class="mid">
+            <div class="title1">MOBILE LEGENDS</div>
+            <div class="title2">IT FESTIVAL 2025</div>
+          </div>
+          <div class="right">
+            <div class="total-kill-left">20</div>
+            <div class="scores left">
+              <div class="score"></div>
+              <div class="score"></div>
+              <div class="score"></div>
+            </div>
+          </div>
+        </div>
+        <div class="team left">
+          <div class="team-name">ONIC</div>
+          <div class="status">DEFEAT</div>
+          <div class="status glow">DEFEAT</div>
+        </div>
+      </div>
+      <div class="team-state-container">
+        <div class="team-state left">
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="middle" style="background: none">
+          <h1 class="title">game duration</h1>
+          <div class="game-duration-display">20:30</div>
+          <div class="stats">
+            <div class="gold left">30k</div>
+            <div class="middle-icon gold">
+              <img src="assets/images/icon/IconPostgame/gold.png" alt="" />
+            </div>
+            <div class="gold right">34.5k</div>
+          </div>
+          <div class="stats">
+            <div class="turret left">2</div>
+            <div class="middle-icon turret">
+              <img src="assets/images/icon/IconPostgame/turret.png" alt="" />
+            </div>
+            <div class="turret right">1</div>
+          </div>
+          <div class="stats">
+            <div class="lord left">1</div>
+            <div class="middle-icon lord">
+              <img src="assets/images/icon/IconPostgame/lord.png" alt="" />
+            </div>
+            <div class="lord right">1</div>
+          </div>
+          <div class="stats">
+            <div class="turtle left">2</div>
+            <div class="middle-icon turtle">
+              <img src="assets/images/icon/IconPostgame/turtle.png" alt="" />
+            </div>
+            <div class="turtle right">2</div>
+          </div>
+          <div class="stats">
+            <div class="red left">2</div>
+            <div class="middle-icon red-buff">
+              <img src="assets/images/icon/IconPostgame/redbuff.png" alt="" />
+            </div>
+            <div class="red right">1</div>
+          </div>
+          <div class="stats">
+            <div class="purple left">2</div>
+            <div class="middle-icon purple-buff">
+              <img
+                src="assets/images/icon/IconPostgame/purplebuff.png"
+                alt=""
+              />
+            </div>
+            <div class="purple right">1</div>
+          </div>
+          <div class="sponsor">
+            <div class="container-vid">
+              <video autoplay loop muted style="width: 400px">
+                <source src="assets/videos/Sponsored.webm" />
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-state right">
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+          </div>
+          <div class="card">
+            <div class="player-name"></div>
+            <div class="hero-name"></div>
+            <div class="items">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="battle-spell"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div class="player-kda">
+              <h1 class="kda-title">KDA</h1>
+              <h1 class="kda-value"></h1>
+              <h1 class="gold-title">GOLD</h1>
+              <h1 class="gold-value"></h1>
+            </div>
+            <div class="hero-container">
+              <img src="" class="hero-photo" />
+            </div>
+            <img src="" class="player-photo" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/postgame.js"></script>
+  </body>
+</html>

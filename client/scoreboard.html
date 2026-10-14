@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>In-Game Scoreboard</title>
+    <link rel="stylesheet" href="assets/css/scoreboard.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <div class="parent-container">
+      <div class="scoreboard-container">
+        <div class="icon-hmj"></div>
+        <div class="left">
+          <div class="scoreboard-section left">
+            <div class="game-stats left">
+              <div class="stat-item turtle">
+                <i class="icon"></i><span id="turtle-left">0</span>
+              </div>
+              <div class="stat-item lord">
+                <i class="icon"></i><span id="lord-left">0</span>
+              </div>
+              <div class="stat-item turret">
+                <i class="icon"></i><span id="turret-left">0</span>
+              </div>
+              <div class="stat-item gold">
+                <i class="icon"></i><span id="gold-left">0k</span>
+              </div>
+            </div>
+          </div>
+          <div class="team-section left">
+            <div class="team-name" id="team-name-left">LEFT TEAM NAME</div>
+            <span class="gold-advantage" id="gold-advantage-left"></span>
+          </div>
+        </div>
+        <div class="center-section">
+          <div class="logo-pointkill">
+            <span id="score-left-value"></span>
+            <div class="center-logo">
+              <img src="assets/images/ITFESTIVALPUTIH.png" alt="Event Logo" />
+            </div>
+            <span id="score-right-value"></span>
+          </div>
+          <div class="score-indicators">
+            <div class="score-left">
+              <div class="score-bar left"></div>
+              <div class="score-bar left"></div>
+              <div class="score-bar left"></div>
+            </div>
+            <div class="game-time" id="game-time"></div>
+            <div class="score-right">
+              <div class="score-bar right"></div>
+              <div class="score-bar right"></div>
+              <div class="score-bar right"></div>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="scoreboard-section right">
+            <div class="game-stats right">
+              <div class="stat-item turtle">
+                <span id="turtle-right">0</span><i class="icon"></i>
+              </div>
+              <div class="stat-item lord">
+                <span id="lord-right">0</span><i class="icon"></i>
+              </div>
+              <div class="stat-item turret">
+                <span id="turret-right">0</span><i class="icon"></i>
+              </div>
+              <div class="stat-item gold">
+                <span id="gold-right">0k</span><i class="icon"></i>
+              </div>
+            </div>
+          </div>
+          <div class="team-section right">
+            <span class="gold-advantage" id="gold-advantage-right"></span>
+            <div class="team-name" id="team-name-right">RIGHT TEAM NAME</div>
+          </div>
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="event-details">
+          <p>
+            MOBILE LEGENDS: BANG BANG <br />
+            IT FESTIVAL 2025 <br /><span>#</span>FromMotivationToInovation
+          </p>
+        </div>
+        <div class="sponsors-container">
+          <video autoplay loop muted style="width: 220px">
+            <source src="assets/videos/sponsor.mp4" />
+          </video>
+        </div>
+        <div class="casters-container">
+          <div class="icon"></div>
+          <span>AMAR | NABIL | SUTAN </span>
+        </div>
+      </div>
+    </div>
+    <script>
+      feather.replace();
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/scoreboard.js"></script>
+  </body>
+</html>

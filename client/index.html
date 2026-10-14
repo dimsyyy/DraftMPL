@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alat Pemisah PDF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .loader {
+        border-top-color: #3498db;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+      }
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen p-4"
+  >
+    <div class="w-full max-w-2xl bg-white rounded-xl shadow-lg p-6 md:p-8">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-900">Alat Pemisah PDF</h1>
+        <p class="text-gray-600 mt-2">
+          Pisahkan satu file PDF menjadi beberapa file kecil berdasarkan jumlah
+          halaman yang Anda tentukan.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Langkah 1: Pilih File -->
+        <div>
+          <label
+            for="pdfFile"
+            class="block text-lg font-semibold text-gray-700 mb-2"
+            >Langkah 1: Pilih File PDF Anda</label
+          >
+          <div
+            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+          >
+            <div class="space-y-1 text-center">
+              <svg
+                class="mx-auto h-12 w-12 text-gray-400"
+                stroke="currentColor"
+                fill="none"
+                viewBox="0 0 48 48"
+                aria-hidden="true"
+              >
+                <path
+                  d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div class="flex text-sm text-gray-600">
+                <label
+                  for="pdfFile"
+                  class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                >
+                  <span>Unggah file</span>
+                  <input
+                    id="pdfFile"
+                    name="pdfFile"
+                    type="file"
+                    class="sr-only"
+                    accept=".pdf"
+                  />
+                </label>
+                <p class="pl-1">atau seret dan lepas</p>
+              </div>
+              <p id="fileName" class="text-xs text-gray-500">
+                PDF hingga 100MB
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Langkah 2: Atur Halaman -->
+        <div>
+          <label
+            for="pagesPerFile"
+            class="block text-lg font-semibold text-gray-700"
+            >Langkah 2: Atur Halaman per File</label
+          >
+          <p class="text-sm text-gray-500 mb-2">
+            Setiap file baru akan berisi jumlah halaman ini.
+          </p>
+          <input
+            type="number"
+            id="pagesPerFile"
+            value="2"
+            min="1"
+            class="mt-1 block w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-indigo-500 focus:ring-indigo-500"
+          />
+        </div>
+
+        <!-- Langkah 3: Proses -->
+        <div>
+          <button
+            id="splitButton"
+            class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300 disabled:cursor-not-allowed"
+          >
+            Pisahkan PDF & Unduh
+          </button>
+        </div>
+      </div>
+
+      <!-- Status & Hasil -->
+      <div id="status" class="mt-6 text-center text-gray-600"></div>
+    </div>
+
+    <script>
+      const pdfFileInput = document.getElementById("pdfFile");
+      const pagesPerFileInput = document.getElementById("pagesPerFile");
+      const splitButton = document.getElementById("splitButton");
+      const statusDiv = document.getElementById("status");
+      const fileNameDiv = document.getElementById("fileName");
+
+      pdfFileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          fileNameDiv.textContent = `File terpilih: ${file.name}`;
+        } else {
+          fileNameDiv.textContent = "PDF hingga 100MB";
+        }
+      });
+
+      splitButton.addEventListener("click", async () => {
+        const file = pdfFileInput.files[0];
+        const pagesPerFile = parseInt(pagesPerFileInput.value, 10);
+
+        if (!file) {
+          statusDiv.innerHTML = `<span class="text-red-500 font-medium">Silakan pilih file PDF terlebih dahulu.</span>`;
+          return;
+        }
+        if (isNaN(pagesPerFile) || pagesPerFile < 1) {
+          statusDiv.innerHTML = `<span class="text-red-500 font-medium">Jumlah halaman per file tidak valid.</span>`;
+          return;
+        }
+
+        splitButton.disabled = true;
+        statusDiv.innerHTML = `
+                <div class="flex items-center justify-center">
+                    <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6 mr-3"></div>
+                    <span>Membaca file PDF... Mohon tunggu.</span>
+                </div>`;
+
+        try {
+          const arrayBuffer = await file.arrayBuffer();
+          const { PDFDocument } = PDFLib;
+          const originalPdf = await PDFDocument.load(arrayBuffer);
+          const totalPages = originalPdf.getPageCount();
+
+          const zip = new JSZip();
+          const originalFileName = file.name.replace(/\.pdf$/i, "");
+
+          statusDiv.innerHTML = `
+                    <div class="flex items-center justify-center">
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6 mr-3"></div>
+                        <span>Memproses ${totalPages} halaman... Ini mungkin butuh beberapa saat.</span>
+                    </div>`;
+
+          for (let i = 0; i < totalPages; i += pagesPerFile) {
+            const end = Math.min(i + pagesPerFile, totalPages);
+            const newPdf = await PDFDocument.create();
+
+            const pageIndices = [];
+            for (let j = i; j < end; j++) {
+              pageIndices.push(j);
+            }
+
+            const copiedPages = await newPdf.copyPages(
+              originalPdf,
+              pageIndices
+            );
+            copiedPages.forEach((page) => newPdf.addPage(page));
+
+            const pdfBytes = await newPdf.save();
+
+            // Membuat nama file yang deskriptif
+            const startPage = i + 1;
+            const endPage = end;
+            const newFileName = `${originalFileName}_halaman_${startPage}-${endPage}.pdf`;
+            zip.file(newFileName, pdfBytes);
+          }
+
+          statusDiv.innerHTML = `
+                    <div class="flex items-center justify-center">
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6 mr-3"></div>
+                        <span>Membuat file ZIP...</span>
+                    </div>`;
+
+          const zipBlob = await zip.generateAsync({ type: "blob" });
+
+          const downloadLink = document.createElement("a");
+          downloadLink.href = URL.createObjectURL(zipBlob);
+          downloadLink.download = `${originalFileName}_terpisah.zip`;
+
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+
+          URL.revokeObjectURL(downloadLink.href);
+
+          statusDiv.innerHTML = `<span class="text-green-600 font-bold">Selesai! File ZIP Anda telah diunduh.</span>`;
+        } catch (error) {
+          console.error(error);
+          statusDiv.innerHTML = `<span class="text-red-500 font-medium">Terjadi kesalahan saat memproses PDF. Pastikan file tidak rusak.</span>`;
+        } finally {
+          splitButton.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

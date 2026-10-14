@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Right Team Display</title>
+    <link rel="stylesheet" href="assets/css/display-teams.css" />
+  </head>
+  <body>
+    <div class="team-display-container right">
+      <div class="team-name-wrapper">
+        <h1 class="team-name" id="team-name">RIGHT TEAM NAME</h1>
+        <div class="score-group score-right">
+          <div class="score-bar"></div>
+          <div class="score-bar"></div>
+          <div class="score-bar"></div>
+        </div>
+      </div>
+      <header class="team-header">
+        <div class="ban-slots">
+          <div class="ban-slot"></div>
+          <div class="ban-slot"></div>
+          <div class="ban-slot"></div>
+          <div class="ban-slot"></div>
+          <div class="ban-slot"></div>
+        </div>
+      </header>
+      <main class="player-grid">
+        <div class="player-card">
+          <div class="player-name-bar">PLAYER 1</div>
+          <div class="hero-pick-slot"></div>
+        </div>
+        <div class="player-card">
+          <div class="player-name-bar">PLAYER 2</div>
+          <div class="hero-pick-slot"></div>
+        </div>
+        <div class="player-card">
+          <div class="player-name-bar">PLAYER 3</div>
+          <div class="hero-pick-slot"></div>
+        </div>
+        <div class="player-card">
+          <div class="player-name-bar">PLAYER 4</div>
+          <div class="hero-pick-slot"></div>
+        </div>
+        <div class="player-card">
+          <div class="name">
+            <div class="player-name-bar">PLAYER 5</div>
+          </div>
+          <div class="hero-pick-slot"></div>
+        </div>
+      </main>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/rightDisplay.js"></script>
+  </body>
+</html>

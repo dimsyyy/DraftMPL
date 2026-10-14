@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Line Up</title>
+    <link rel="stylesheet" href="assets/css/lineup.css" />
+  </head>
+  <body>
+    <video class="background-video" autoplay muted loop>
+      <source src="assets/videos/ling.mp4" type="video/mp4" />
+    </video>
+
+    <div class="lineup-wrapper">
+      <div class="lineup-top">
+        <div class="lineup-teamname"></div>
+        <div class="lineup-title">
+          <div class="tipes">IT FESTIVAL 2025</div>
+          <div class="mlbb">MOBILE LEGENDS : BANG-BANG</div>
+        </div>
+        <div class="lineup-iconlogo">
+          <img src="assets/images/ItFest.png" />
+        </div>
+      </div>
+      <div class="lineup-player">
+        <div class="images">
+          <img class="player" />
+          <img class="player" />
+          <img class="player" />
+          <img class="player" />
+          <img class="player" />
+        </div>
+        <div class="roles">
+          <div class="role"><img /></div>
+          <div class="role"><img /></div>
+          <div class="role"><img /></div>
+          <div class="role"><img /></div>
+          <div class="role"><img /></div>
+        </div>
+        <div class="lineup-playername">
+          <div class="name"></div>
+          <div class="name"></div>
+          <div class="name"></div>
+          <div class="name"></div>
+          <div class="name"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="assets/js/lineup.js"></script>
+  </body>
+</html>

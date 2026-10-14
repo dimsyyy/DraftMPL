@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+    <link rel="stylesheet" href="assets/css/countdown.css" />
+  </head>
+  <body>
+    <div id="click-to-start-overlay">
+      <div class="start-text">KLIK UNTUK MEMULAI</div>
+    </div>
+    <div class="countdown-container">
+      <main class="main-content">
+        <div class="timer-top">
+          <div class="timer-section">
+            <div class="logo-disp">
+              <img
+                src="assets/images/ItFest.png"
+                alt="Event Logo"
+                class="event-logo"
+              />
+              <img
+                src="assets/images/logo.png"
+                alt="Event Logo"
+                class="event-logo"
+              />
+            </div>
+            <div class="caster-container">
+              <div class="caster-photo">
+                <div class="caster">
+                  <img
+                    src="assets/images/CASTER/CASTER-AMAR.png"
+                    class="caster-img"
+                  />
+                  <div class="caster-name">MAUVE</div>
+                </div>
+                <div class="caster">
+                  <img
+                    src="assets/images/CASTER/CASTER-KEVIN.png"
+                    class="caster-img"
+                  />
+                  <div class="caster-name">KEVIN</div>
+                </div>
+              </div>
+              <div class="caster-name"></div>
+            </div>
+            <div class="timer-display">
+              <span class="timer-label">START IN</span>
+              <span class="timer-time" id="countdown-timer">59:99</span>
+            </div>
+          </div>
+          <div class="ads-container">
+            <video id="ad-video-player" autoplay></video>
+          </div>
+        </div>
+        <div class="sponsors">
+          <div class="loop-video">
+            <video autoplay loop muted>
+              <source src="assets/videos/Sponsored.webm" />
+            </video>
+          </div>
+          <div class="schedule">
+            <div class="header">MATCH SCHEDULE</div>
+            <div class="team-match">
+              <div class="match">ONIC VS RRQ</div>
+              <div class="match">ALTER EGO VS BTR</div>
+              <div class="match"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <div class="secondary-content">
+        <div class="timer">
+          <div class="timer-label">START IN</div>
+          <div class="secondary-timer-display">
+            <div class="timer-time" id="countdown-timer2">59:99</div>
+          </div>
+        </div>
+        <div class="roaster-animate">
+          <div class="team left">
+            <div class="image-player">
+              <div class="players">
+                <img src="assets/images/Roster/dyren.png" class="player" />
+                <div class="player-info">
+                  <div class="player-role">
+                    <img src="assets/images/roles/exp.png" alt="" />
+                  </div>
+                  <div class="player-name">DURENNNn</div>
+                </div>
+              </div>
+            </div>
+            <div class="team-names"></div>
+          </div>
+          <div class="middle-content">
+            <div class="vs">VS</div>
+            <div class="sponsors">
+              <video autoplay loop muted>
+                <source src="assets/videos/Sponsored.webm" />
+              </video>
+            </div>
+            <div class="logo">
+              <img src="assets/images/ItFest.png" alt="" />
+            </div>
+          </div>
+          <div class="team right">
+            <div class="image-player">
+              <div class="players">
+                <img src="assets/images/Roster/dyren.png" class="player" />
+                <div class="player-info">
+                  <div class="player-role">
+                    <img src="assets/images/roles/exp.png" alt="" />
+                  </div>
+                  <div class="player-name"></div>
+                </div>
+              </div>
+            </div>
+            <div class="team-names"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="assets/js/countdown.js"></script>
+  </body>
+</html>
