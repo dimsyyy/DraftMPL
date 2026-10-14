@@ -1,0 +1,238 @@
+body {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  background: #fff;
+  /* background-image: url("../images/gfxValo.png"); */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  color: #222;
+  overflow: hidden;
+}
+
+video.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.header-winner {
+  display: flex;
+  /* background-color: #e94463; */
+  height: 100px;
+  width: 1920px;
+}
+
+.header-winner .logo {
+  background: url("../images/ItFest.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: #e94463; */
+  background-size: 80%;
+  height: 100px;
+  width: 100px;
+}
+
+.header-winner .logo-bgmol {
+  background: url("../images/bgmol.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: #e94463; */
+  background-size: 80%;
+  height: 100px;
+  width: 100px;
+}
+
+.header-winner .team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  font-size: 60px;
+  color: white;
+  width: 760px;
+  height: 100px;
+  background-color: #16213d;
+}
+
+.header-winner .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  font-size: 60px;
+  color: #222;
+  height: 100px;
+  width: 100px;
+  background-color: white;
+}
+
+.victory-text {
+  font-size: 400px;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.player-photo-winner {
+  display: flex;
+  width: calc(1920px / 384px);
+  height: 1050px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.player-photo-winner .player-winner {
+  width: 384px;
+  background-image: url("../images/Roster/RAGAESPORT/EGANAXNUTS.png");
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  background-size: 150%;
+  z-index: 2;
+}
+
+.victory-text::after {
+  content: attr(data-text); /* ambil isi teks dari atribut data-text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  color: transparent; /* tanpa fill */
+  -webkit-text-stroke: 3px #222; /* warna dan ketebalan stroke */
+  /* font-weight: bold; */
+  pointer-events: none; /* agar tidak mengganggu klik */
+}
+
+.player-winner-name {
+  width: 1400px;
+  position: absolute;
+  text-align: center;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: 600;
+  color: #e94463;
+  word-break: normal;
+}
+
+/* File: assets/css/winner.css (Tambahkan di paling bawah) */
+
+/* --- KEYFRAMES UNTUK ANIMASI --- */
+
+@keyframes text-wipe {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes flicker-in {
+  0%,
+  10%,
+  20%,
+  30%,
+  40%,
+  50%,
+  60% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  5%,
+  15%,
+  25%,
+  35%,
+  45%,
+  55% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- KONDISI AWAL (SEBELUM ANIMASI) --- */
+
+.header-winner {
+  transform: translateY(-100%);
+  transition: transform 0.8s ease-out;
+}
+
+.victory-text {
+  opacity: 0; /* Sembunyikan dulu sebelum dianimasikan */
+}
+
+.player-photo-winner .player-winner {
+  opacity: 0;
+}
+
+.player-winner-name {
+  opacity: 0;
+  /* transform: translateY(20px); */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* --- KONDISI SAAT ANIMASI DIPICU (.animate-in) --- */
+
+body.animate-in .header-winner {
+  transform: translateY(0);
+}
+
+body.animate-in .victory-text {
+  opacity: 1;
+  animation: text-wipe 1.5s cubic-bezier(0.7, 0, 0.3, 1) 0.5s forwards;
+}
+
+/* Terapkan animasi flicker dengan durasi dan fill-mode */
+body.animate-in .player-photo-winner .player-winner {
+  animation-name: flicker-in;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards; /* Menetap di state akhir (opacity: 1) */
+}
+
+/* Atur delay berurutan untuk setiap pemain */
+body.animate-in .player-photo-winner .player-winner:nth-child(3) {
+  animation-delay: 2s; /* Player tengah */
+}
+body.animate-in .player-photo-winner .player-winner:nth-child(2),
+body.animate-in .player-photo-winner .player-winner:nth-child(4) {
+  animation-delay: 2.3s; /* Player 2 & 4 */
+}
+body.animate-in .player-photo-winner .player-winner:nth-child(1),
+body.animate-in .player-photo-winner .player-winner:nth-child(5) {
+  animation-delay: 2.6s; /* Player 1 & 5 */
+}
+
+body.animate-in .player-winner-name {
+  opacity: 1;
+  /* transform: translateY(0); */
+  transition-delay: 3.5s; /* Muncul setelah semua foto pemain stabil */
+}
+
+/* --- LOGIKA LOOPING (BONUS) --- */
+/* Setelah 7 detik, sembunyikan foto pemain (total durasi masuk ~3.3s + 7s) */
+body.animate-in .player-photo-winner .player-winner {
+  animation: flicker-in 0.7s forwards, fadeOut 0.5s ease-out 10.3s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Catatan: Untuk looping flicker tanpa henti, akan lebih mudah dikontrol dengan JavaScript
+   dengan menambahkan kelas baru setelah beberapa detik. Namun, untuk permintaan awal,
+   fokusnya adalah animasi masuk dan menghilang setelah 7 detik. */

@@ -1,0 +1,221 @@
+body {
+  margin: 0;
+  font-family: "Bebas Neue";
+  overflow: hidden;
+}
+
+video.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.lineup-top {
+  display: flex;
+}
+
+.lineup-top .lineup-teamname {
+  font-size: 50px;
+  width: 400px;
+  background-color: #e94463;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: white;
+  padding-left: 20px;
+}
+
+.lineup-top .lineup-title {
+  width: 1420px;
+  background-color: #222;
+  color: white;
+  font-size: 40px;
+  text-align: right;
+  padding-right: 20px;
+  margin: 0;
+}
+
+.lineup-top .lineup-title .mlbb {
+  font-size: 20px;
+}
+
+.lineup-top .lineup-iconlogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lineup-top .lineup-iconlogo img {
+  width: 80px;
+}
+
+.lineup-player .images {
+  display: flex;
+  margin-top: 100px;
+  overflow: hidden;
+  position: relative;
+  height: 700px;
+}
+
+.lineup-player .images img.player {
+  z-index: 1;
+  position: absolute;
+  width: calc(1920px / 5);
+  height: 700px;
+  object-fit: cover;
+}
+
+.lineup-player .images img.player:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+.lineup-player .images img.player:nth-child(2) {
+  left: 384px;
+  top: 0;
+}
+.lineup-player .images img.player:nth-child(3) {
+  left: 768px;
+  top: 0;
+}
+.lineup-player .images img.player:nth-child(4) {
+  left: 1152px;
+  top: 0;
+}
+.lineup-player .images img.player:nth-child(5) {
+  left: 1536px;
+  top: 0;
+}
+
+.lineup-player .roles {
+  display: flex;
+}
+
+.lineup-player .roles .role {
+  display: flex;
+  justify-content: center;
+  width: calc(1920px / 5);
+}
+
+.lineup-player .roles .role img {
+  margin-top: 40px;
+  padding: 10px;
+  width: 10%;
+  background-color: #e94463;
+}
+
+.lineup-playername {
+  display: flex;
+}
+
+.lineup-playername .name {
+  width: calc(1920px / 5);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 600;
+}
+/* File: assets/css/lineup.css */
+
+/* --- KONTROL DAN ANIMASI UTAMA --- */
+
+.lineup-wrapper {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.lineup-wrapper.animate-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* MODIFIKASI: Saat animasi keluar, opacity wrapper dibuat delay */
+.lineup-wrapper.animate-out {
+  opacity: 0;
+  pointer-events: none;
+  /* Wrapper baru akan fade out setelah animasi anak-anaknya dimulai (0.6s) */
+  transition-delay: 0.6s;
+}
+
+/* --- ANIMASI MASUK (ENTRY)--- */
+
+/* Default state (sebelum .animate-in) */
+.lineup-top {
+  transform: translateY(-150%);
+  transition: transform 0.6s ease-out;
+}
+.lineup-player .roles .role img {
+  opacity: 0;
+  transform: scale(2.5);
+  transition: transform 0.6s ease-in-out, opacity 0.4s ease-out;
+}
+.lineup-player .images .player {
+  transform: translateY(110%);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.lineup-playername .name {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* State saat .animate-in ditambahkan */
+.lineup-wrapper.animate-in .lineup-top {
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.lineup-wrapper.animate-in .lineup-player .roles .role img {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease-out 0.5s, transform 0.6s ease-in-out 0.8s;
+}
+.lineup-wrapper.animate-in .lineup-player .images .player:nth-child(3) {
+  transform: translateY(0);
+  transition-delay: 1.5s;
+}
+.lineup-wrapper.animate-in .lineup-player .images .player:nth-child(2),
+.lineup-wrapper.animate-in .lineup-player .images .player:nth-child(4) {
+  transform: translateY(0);
+  transition-delay: 1.7s;
+}
+.lineup-wrapper.animate-in .lineup-player .images .player:nth-child(1),
+.lineup-wrapper.animate-in .lineup-player .images .player:nth-child(5) {
+  transform: translateY(0);
+  transition-delay: 1.9s;
+}
+.lineup-wrapper.animate-in .lineup-playername .name {
+  opacity: 1;
+  transition-delay: 2.2s;
+}
+
+/* --- BARU: ANIMASI KELUAR (EXIT) --- */
+
+/* Saat .animate-out, kembalikan semua elemen ke posisi awalnya */
+.lineup-wrapper.animate-out .lineup-top {
+  transform: translateY(-150%);
+  transition-delay: 0s; /* Langsung keluar */
+}
+.lineup-wrapper.animate-out .lineup-player .roles .role img,
+.lineup-wrapper.animate-out .lineup-playername .name {
+  opacity: 0;
+  transition-delay: 0s; /* Langsung keluar */
+}
+.lineup-wrapper.animate-out .lineup-player .images .player {
+  transform: translateY(110%);
+}
+
+/* Atur urutan keluar untuk foto player sesuai permintaan */
+.lineup-wrapper.animate-out .lineup-player .images .player:nth-child(1),
+.lineup-wrapper.animate-out .lineup-player .images .player:nth-child(5) {
+  transition-delay: 0s; /* Player 1 & 5 keluar duluan */
+}
+.lineup-wrapper.animate-out .lineup-player .images .player:nth-child(2),
+.lineup-wrapper.animate-out .lineup-player .images .player:nth-child(4) {
+  transition-delay: 0.2s; /* Player 2 & 4 menyusul */
+}
+.lineup-wrapper.animate-out .lineup-player .images .player:nth-child(3) {
+  transition-delay: 0.4s; /* Player 3 (tengah) terakhir keluar */
+}

@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap");
+
+body {
+  margin: 0;
+  background-color: #00ff00; /* Warna hijau untuk chroma key */
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Bebas Neue", sans-serif;
+  color: white;
+}
+
+.icon-hmj {
+  background-image: url("../images/logo-hmjmi.png");
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 65px;
+  height: 65px;
+  background-color: #ffffff;
+}
+
+.parent-container {
+  display: flex;
+  justify-content: end;
+}
+
+/* KOTAK INFO KANAN ATAS */
+.info-box {
+  background-color: white;
+  color: black;
+  text-align: right;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.event-details {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  height: 115px;
+  width: 430px;
+}
+
+.event-details p {
+  margin-right: 30px;
+}
+
+.casters-container {
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: 430px;
+  font-size: 16px;
+  background-color: #222222;
+  color: white;
+  gap: 10px;
+}
+
+.casters-container .icon {
+  background-image: url("../images/icon/mic.svg");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #e94560;
+  width: 25px;
+  height: 25px;
+}
+/* PAPAN SKOR UTAMA */
+.scoreboard-container {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.scoreboard-section {
+  width: 399px;
+  height: 65px;
+  background-color: #16213d;
+}
+.team-section {
+  background-color: #222222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  height: 25px;
+  width: 399px;
+}
+
+.logo-pointkill {
+  width: 286px;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-pointkill span {
+  font-size: 50px;
+}
+
+.team-section.right span {
+  margin-left: 10px;
+}
+.team-section.left span {
+  margin-right: 10px;
+}
+
+.team-name {
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 0 10px;
+}
+
+.center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 286px;
+  background-color: #e94560;
+}
+
+.center-logo {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.center-logo img {
+  width: 47px;
+}
+
+.score-indicators {
+  background-color: white;
+  display: flex;
+  gap: 8px;
+  height: 25px;
+  justify-content: space-around;
+  width: 286px;
+  align-items: center;
+}
+
+.score-left,
+.score-right {
+  display: flex;
+  gap: 5px;
+}
+
+.score-bar {
+  width: 25px;
+  height: 10px;
+  background-color: #5555552d;
+}
+
+.score-bar.active {
+  background-color: #e94560;
+}
+
+.sponsors-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 18px;
+  right: 256px;
+  width: 160px;
+  height: 90px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.game-time {
+  color: #16213d;
+  font-size: 23px;
+}
+
+.scoreboard-section {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.game-stats {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.scoreboard-section.right {
+  justify-content: end;
+}
+
+.game-stats.right {
+  flex-direction: row-reverse;
+  margin-right: 20px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+}
+
+.stat-item .icon {
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Mendefinisikan gambar untuk setiap ikon */
+.stat-item.gold .icon {
+  background-image: url("../images/icon/icongold.png");
+}
+.stat-item.turret .icon {
+  background-image: url("../images/icon/iconturet.png");
+}
+.stat-item.lord .icon {
+  background-image: url("../images/icon/iconlord.png");
+}
+.stat-item.turtle .icon {
+  background-image: url("../images/icon/iconturtle.png");
+}

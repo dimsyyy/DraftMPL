@@ -1,0 +1,637 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+body {
+  background-color: #00ff00;
+  margin: 0;
+  font-family: "bebas neue", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.draft-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  clip-path: inset(0 50% 0 50%);
+  /* Transisi untuk animasi yang mulus */
+  transition: clip-path 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.draft-container.animate-in {
+  /* Kondisi akhir: terbuka penuh */
+  clip-path: inset(0 0 0 0);
+}
+
+.team-section {
+  flex: 1;
+  height: 360px;
+  color: white;
+}
+
+.map-selection {
+  font-size: 36px;
+  height: 50px;
+  margin-bottom: -10px;
+}
+
+.center-info {
+  color: white;
+  text-align: center;
+}
+
+.team-section.team-left,
+.team-section.team-right {
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.team-left .top-info {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.team-left .ban-slots,
+.team-right .ban-slots {
+  display: flex;
+}
+
+.team-left .ban-slot,
+.team-right .ban-slot {
+  width: 50px;
+  height: 50px;
+  background-color: #0000002d;
+}
+
+.ban-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-left .team-name-container,
+.team-right .team-name-container {
+  background-color: #16213d;
+  color: white;
+  padding: 0px 12px;
+  min-width: 180px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-left .team-name,
+.team-right .team-name {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.team-section .pick-slot {
+  overflow: hidden;
+}
+
+.team-left .pick-slots,
+.team-right .pick-slots {
+  display: flex;
+}
+
+.team-left .pick-slot,
+.team-right .pick-slot {
+  flex: 1;
+  box-sizing: border-box;
+  height: 250px;
+  background-color: #222222;
+  position: relative;
+}
+
+.team-left .player-names,
+.team-right .player-names {
+  display: flex;
+  border-top: 2px solid white;
+}
+
+.team-left .player-name,
+.team-right .player-name {
+  flex: 1;
+  box-sizing: border-box;
+  background-color: #16213d;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: 400;
+  font-size: 15px;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.team-left .pick-slot:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 2px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+.team-left .player-name:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 2px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+.team-right .top-info {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.team-right .ban-slots,
+.team-right .pick-slots,
+.team-right .player-names {
+  flex-direction: row-reverse;
+}
+
+.team-right .pick-slot:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 2px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 99;
+}
+
+.team-right .player-name:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 2px;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+.center-panel {
+  width: 300px;
+  height: 322px;
+  background-image: url("../images/backgroundbanpick.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.top-scores {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 135px;
+}
+
+.score-group {
+  display: flex;
+  gap: 6px;
+}
+
+.score-bar {
+  position: relative;
+  top: 45px;
+  width: 8px;
+  height: 25px;
+  background-color: #ffffff;
+}
+
+.score-bar.active {
+  background-color: #e94560;
+}
+
+.score-group.score-right {
+  flex-direction: row-reverse;
+}
+
+.turn-timers-container {
+  position: relative;
+  top: 30px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.turn-timer-bar {
+  width: 48%;
+  height: 8px;
+  background-color: #ffffff;
+}
+
+.timer-fill {
+  width: 100%;
+  height: 100%;
+  background-color: #e94560;
+}
+
+.turn-timer-bar.right-bar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.phase-text {
+  color: white;
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.main-timer-container {
+  position: relative;
+  top: -50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.main-timer {
+  color: #e94560;
+  font-size: 70px;
+}
+
+.arrow {
+  color: rgba(255, 255, 255, 0);
+  font-size: 50px;
+  font-weight: 300;
+  opacity: 0.5;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.arrow.active {
+  color: #ffffff;
+  opacity: 1;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.ban-slot {
+  overflow: hidden;
+  position: relative;
+}
+
+.ban-slot::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 20px 8px rgba(255, 20, 20, 0.85);
+  opacity: 0;
+  z-index: 10;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.animate-ban img {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes redGlow {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes toGrayscale {
+  from {
+    filter: grayscale(0%);
+  }
+  to {
+    filter: grayscale(100%);
+  }
+}
+
+.animate-ban img {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-ban::after {
+  animation: redGlow 0.9s ease-in-out;
+  animation-delay: 0.4s;
+}
+
+.animate-ban img.grayscaled {
+  animation: toGrayscale 0.5s linear;
+}
+
+.ban-slot img.grayscaled {
+  filter: grayscale(100%);
+}
+
+.pick-slot video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.pick-slot .stinger-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 5;
+}
+
+@keyframes statsSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes statsSlideDown {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.pick-slot .hero-stats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(12, 22, 44, 1);
+  color: white;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  animation: statsSlideUp 0.4s ease-out forwards;
+}
+
+.pick-slot .hero-stats.hiding {
+  animation: statsSlideDown 0.4s ease-out forwards;
+}
+
+.hero-stats .stat-label {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+.hero-stats .stat-value {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%) rotate(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%) rotate(90deg);
+    opacity: 1;
+  }
+}
+
+.pick-slot .hero-name-overlay {
+  background: #000000;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 53%
+  );
+  width: 218px;
+  padding-left: 10px;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+  position: absolute;
+  letter-spacing: 1px;
+  left: -100px;
+  top: 95px;
+  z-index: 2;
+  animation: slideInFromLeft 0.5s ease-out;
+}
+
+.pick-slot .player-photo-overlay {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  top: 55px;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  opacity: 0.9;
+  z-index: 1;
+
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+.pick-slot .player-photo-overlay.active-turn {
+  transform: scale(1.25);
+}
+
+/* GANTI SELURUH BLOK INI DI style.css */
+
+.map-shuffle {
+  position: absolute;
+  justify-content: center;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.map-shuffle.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.map-shuffle .header {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px;
+  width: 310px;
+  height: 60px;
+  text-align: center;
+  background-color: #222;
+  color: white;
+}
+
+.map-shuffle .map-container {
+  width: 1210px;
+  height: 260px;
+  background-color: white;
+  background-image: url("../images/gfxValo.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-shuffle .map-container .triangle-arrow {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid #e94463;
+  position: absolute;
+  top: 20px;
+  z-index: 5;
+}
+
+.map-shuffle .map-container .map-strip {
+  display: flex;
+  position: absolute;
+  top: 60px;
+  gap: 30px;
+}
+
+/* --- PERBAIKAN DIMULAI DI SINI --- */
+.map-shuffle .map-container .map {
+  width: 245px;
+  position: relative; /* 1. Jadikan setiap map sebagai 'jangkar' posisi */
+  transition: 0.5s all ease;
+}
+
+.map-shuffle .map-container .map img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.5s ease-in-out;
+}
+
+.map-shuffle .map-container .map.selected {
+  width: 265px; /* Efek membesar saat terpilih */
+}
+
+.map-shuffle .map-container .map.selected img {
+  filter: grayscale(0%);
+}
+
+.map-shuffle .map-container .map h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.glow-overlay {
+  position: absolute;
+  /* 2. Atur posisi agar pas di dalam .map */
+  top: -21px;
+  left: 0;
+  width: 100%; /* Lebar 100% dari .map */
+  height: 100%;
+  z-index: 3; /* z-index tidak perlu terlalu tinggi */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+.glow-overlay.blinking {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Di dalam file control.css */
+.match-schedule-control {
+  margin-top: 40px;
+  border-top: 2px solid #444;
+  padding-top: 20px;
+}
+.schedule-inputs {
+  display: flex;
+  gap: 15px;
+  background-color: #2a2a2a;
+  padding: 15px;
+  border-radius: 8px;
+}

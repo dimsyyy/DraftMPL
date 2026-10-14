@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  font-family: "Bebas Neue";
+  background-image: url("../images/gfxValo.png");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden; /* Sangat penting untuk menyembunyikan elemen di luar layar */
+  background-color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* --- KELAS UNTUK ANIMASI --- */
+
+/* Atur agar transisi berjalan mulus */
+.team-row,
+.middle,
+.player-photo {
+  transition: all 1s ease-out;
+}
+
+/* Kondisi Awal: Elemen disembunyikan di luar layar atau transparan */
+.container:not(.play-animation) .team-row.left {
+  transform: translateX(-110%);
+}
+.container:not(.play-animation) .team-row.right {
+  transform: translateX(110%);
+}
+.container:not(.play-animation) .middle {
+  opacity: 0;
+}
+.player-photo {
+  /* Efek wipe/usap menggunakan clip-path */
+  clip-path: inset(100% 0 0 0); /* Awalnya terpotong dari atas */
+}
+
+/* Kelas 'pemicu' yang akan ditambahkan oleh JavaScript */
+.container.play-animation .team-row.left,
+.container.play-animation .team-row.right {
+  transform: translateX(0); /* Kembali ke posisi normal */
+}
+.container.play-animation .middle {
+  opacity: 1; /* Muncul */
+  transition-delay: 0.8s; /* Muncul setelah tim selesai masuk */
+}
+
+/* Animasi untuk tim keluar layar */
+.team-row.slide-up {
+  transform: translateY(-85%) !important;
+}
+.team-row.slide-down {
+  transform: translateY(80%) !important;
+}
+
+/* Animasi untuk wipe foto pemain */
+.player-photo.wipe-in {
+  clip-path: inset(0 0 0 0);
+}
+.player-photo.wipe-out {
+  clip-path: inset(0 0 100% 0);
+}
+
+/* --- GAYA ELEMEN (TIDAK BERUBAH) --- */
+.team-row {
+  position: absolute;
+  display: flex;
+  top: 30%;
+  z-index: 10;
+}
+
+.team-row.left {
+  left: 2.6%;
+  top: 26.2%;
+}
+
+.team-row.right {
+  top: 50%;
+}
+
+.player-card {
+  position: relative;
+  width: 364px;
+  height: 257px;
+  background: #000;
+  overflow: hidden;
+}
+.player-card .hero-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  z-index: 1;
+}
+.player-card .player-photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 3;
+  background-color: white;
+}
+.player-card .battle-spell {
+  position: absolute;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  left: 1%;
+  bottom: 13%;
+}
+.player-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 29px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  z-index: 4;
+}
+.player-info .role-icon {
+  background-color: #e94463;
+  width: 29px;
+  height: 29px;
+  margin-right: 4px;
+}
+.middle {
+  display: flex;
+  text-align: center;
+  color: #e94463;
+  margin: 10px 0;
+}
+.scores {
+  display: flex;
+  position: absolute;
+  gap: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 300px;
+}
+.team-name {
+  position: relative;
+  font-size: 128px;
+  width: 500px;
+  overflow: hidden;
+  color: #222222;
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: 1;
+}
+.team-name.left {
+  position: absolute;
+  left: 2.7%;
+  top: 30%;
+}
+.team-name.right {
+  position: absolute;
+  right: 2.7%;
+  bottom: 30%;
+}
+.team-right {
+  text-align: right;
+}
+.team-left {
+  text-align: left;
+}

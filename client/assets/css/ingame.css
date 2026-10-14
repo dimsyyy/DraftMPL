@@ -1,0 +1,902 @@
+body {
+  background-color: #00ff00;
+  margin: 0;
+  overflow: hidden;
+}
+#notifications-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.notification {
+  position: fixed;
+  opacity: 1;
+  pointer-events: none;
+}
+.notification.visible {
+  opacity: 1;
+}
+.notification video {
+  width: 100%;
+  height: auto;
+}
+.notification.spawn_lord {
+  width: 300px;
+  top: 20%;
+  right: 0;
+}
+.notification.spawn_turtle {
+  width: 300px;
+  top: 20%;
+  right: 0;
+}
+.notification.wiped_out {
+  width: 800px;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.notification.triple_kill {
+  width: 600px;
+  height: 260px;
+  top: 650px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+.triple_kill .background-video {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.5);
+  z-index: 1;
+}
+.notification.turtle_kill,
+.notification.lord_kill,
+.notification.turtle_steal,
+.notification.lord_steal {
+  width: 1100px;
+  height: 477px;
+  top: 550px !important;
+  left: 15% !important;
+  transform: translateX(-50%);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.notification.maniac,
+.notification.savage {
+  width: 1100px;
+  height: 477px;
+  top: 650px !important;
+
+  left: 18%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+.turtle_kill .background-video,
+.lord_steal .background-video,
+.turtle_steal .background-video,
+.lord_kill .background-video,
+.maniac .background-video,
+.savage .background-video {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.turtle_kill .player-name,
+.lord_kill .player-name,
+.turtle_steal .player-name,
+.lord_steal .player-name {
+  position: absolute;
+  z-index: 2;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: bold;
+  color: #16213d;
+  font-size: 30px;
+  left: 625px;
+  top: 410px;
+  opacity: 0;
+  animation: opacityTurtleLordIn 0.7s ease 2s forwards,
+    opacityTurtleLordOut 0.7s ease 4s forwards;
+}
+
+.maniac .player-name {
+  position: absolute;
+  z-index: 29;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: bold;
+  color: #16213d;
+  font-size: 25px;
+  left: 490px;
+  top: 303px;
+  opacity: 0;
+  animation: opacityTurtleLordIn 0.7s ease 2s forwards,
+    opacityTurtleLordOut 0.7s ease 4s forwards;
+}
+
+.savage .player-name {
+  position: absolute;
+  z-index: 29;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: bold;
+  color: #16213d;
+  font-size: 25px;
+  left: 350px;
+  top: 68px;
+  opacity: 0;
+  animation: opacityTurtleLordIn 0.7s ease 2s forwards,
+    opacityTurtleLordOut 0.7s ease 4s forwards;
+}
+.player-name p {
+  text-align: center;
+}
+@keyframes opacityTurtleLordIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opacityTurtleLordOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes photoSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes photoSlideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+}
+.triple_kill .player-photo {
+  position: absolute;
+  z-index: 3;
+  width: 180px;
+  height: 199px;
+  left: 330px;
+  top: 65px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: photoSlideUp 0.7s ease 1.4s forwards,
+    photoSlideDown 0.7s ease 5s forwards;
+}
+.triple_kill .player-name {
+  position: absolute;
+  z-index: 2;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: bold;
+  color: #16213d;
+  text-align: center;
+  font-size: 30px;
+  left: 150px;
+  top: 170px;
+  opacity: 0;
+  animation: opacityTurtleLordIn 0.7s ease 1.4s forwards,
+    opacityTurtleLordOut 0.7s ease 5s forwards;
+}
+.lord_kill .player-photo,
+.turtle_kill .player-photo,
+.lord_steal .player-photo,
+.turtle_steal .player-photo {
+  position: absolute;
+  z-index: 3;
+  width: 230px;
+  height: 255px;
+  left: 590px;
+  top: 184px;
+  opacity: 0;
+  animation: photoSlideUp 0.7s ease 1.4s forwards,
+    photoSlideDown 0.7s ease 4.5s forwards;
+}
+
+.maniac .player-photo {
+  position: absolute;
+  z-index: 3;
+  width: 230px;
+  height: 255px;
+  left: 450px;
+  top: 73px;
+  opacity: 0;
+  animation: photoSlideUp 0.7s ease 1.4s forwards,
+    photoSlideDown 0.7s ease 4.5s forwards;
+}
+
+.savage .player-photo {
+  position: absolute;
+  z-index: 3;
+  width: 230px;
+  height: 255px;
+  left: 450px;
+  top: 45px;
+  opacity: 0;
+  animation: photoSlideUp 0.7s ease 1.4s forwards,
+    photoSlideDown 0.7s ease 4.5s forwards;
+}
+
+.turtle_kill .player-photo,
+.lord_kill .player-photo,
+.turtle_steal .player-photo,
+.lord_steal .player-photo,
+.maniac .player-photo {
+  background-size: 160%;
+  background-position: center 0%;
+}
+@keyframes nameSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(210px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes nameSlideRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(220px);
+  }
+}
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideOutFromRight {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slideOutFromLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@keyframes slideOutFromBot {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+@keyframes slideInFromLeftLv {
+  from {
+    opacity: 0;
+    transform: translateX(-150%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(55%);
+  }
+}
+@keyframes slideInFromRightLv {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-35.5%);
+  }
+}
+@keyframes slideOutFromRightLv {
+  from {
+    transform: translateX(38.5%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slideOutFromLeftLv {
+  from {
+    transform: translateX(-35.5%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+.notification.pos-left-0 {
+  top: 350px;
+  transform: translateX(0);
+}
+.notification.pos-left-1 {
+  top: 440px;
+  transform: translateX(0);
+}
+.notification.pos-left-2 {
+  top: 530px;
+  transform: translateX(0);
+}
+.notification.pos-left-3 {
+  top: 618px;
+  transform: translateX(0);
+}
+.notification.pos-left-4 {
+  top: 708px;
+  transform: translateX(0);
+}
+.notification.pos-right-0 {
+  top: 350px;
+  right: 0px;
+  transform: translateX(0);
+}
+.notification.pos-right-1 {
+  top: 440px;
+  right: 0px;
+  transform: translateX(0);
+}
+.notification.pos-right-2 {
+  top: 530px;
+  right: 0px;
+  transform: translateX(0);
+}
+.notification.pos-right-3 {
+  top: 618px;
+  right: 0px;
+  transform: translateX(0);
+}
+.notification.pos-right-4 {
+  top: 708px;
+  right: 0px;
+  transform: translateX(0);
+}
+.notification.level-up {
+  width: 300px;
+  height: 85px;
+  position: fixed;
+  background: none;
+}
+.level-up.layout-right .role-icon {
+  right: 0;
+  transform: translateX(100%);
+  animation: slideInFromRight 0.7s ease 0.1s forwards,
+    slideOutFromLeft 0.5s ease 6s forwards;
+}
+.level-up.layout-right .level-panel {
+  right: 0;
+  transform: translateX(100%);
+  justify-content: end;
+  padding-right: 25px;
+  animation: slideInFromRightLv 0.7s ease 0.8s forwards,
+    slideOutFromLeftLv 0.5s ease 5.5s forwards;
+}
+.level-up.layout-right .player-name-banner {
+  left: auto; /* Hapus ketergantungan pada 'left' */
+  right: 85px; /* Atur posisi dari kanan */
+  justify-content: end;
+  padding-right: 4px;
+}
+.level-up .role-icon {
+  position: absolute;
+  width: 85px;
+  height: 85px;
+  background-color: #222222;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 3;
+  opacity: 1;
+  transform: translateX(-100%);
+  animation: slideInFromLeft 0.7s ease 0.1s forwards,
+    slideOutFromRight 0.5s ease 6s forwards;
+}
+.level-up .level-panel {
+  position: absolute;
+  width: 150px;
+  height: 51px;
+  background-color: #f0f0f0;
+  color: #222222;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  display: flex;
+  opacity: 1;
+  transform: translateX(-150%);
+  justify-content: start;
+  padding-left: 5px;
+  align-items: center;
+  z-index: 2;
+  animation: slideInFromLeftLv 0.7s ease-out 0.8s forwards,
+    slideOutFromRightLv 0.5s ease-in 5.5s forwards;
+}
+.level-up .player-name-banner {
+  position: absolute;
+  width: 150px;
+  height: 34px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #d6d6d6;
+  color: #222222;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  text-align: left;
+  z-index: 1;
+  padding-left: 5px;
+  top: 51px;
+  left: 85px;
+  opacity: 0;
+  animation: slideInFromTop 0.7s ease-out 1.6s forwards,
+    slideOutFromBot 0.5s ease-in 5s forwards;
+}
+
+.equipmentItems {
+  position: absolute;
+  left: 50%;
+  top: 737px;
+  transform: translate(-50%, 350px);
+  transition: transform 0.5s ease-out;
+  pointer-events: none;
+}
+.equipmentItems.visible {
+  transform: translate(-50%, 0); /* Kembali ke posisi semula */
+  pointer-events: auto;
+}
+
+.equipmentItems .head {
+  display: flex;
+  justify-content: center;
+}
+
+.equipmentItems .header {
+  width: 190px;
+  height: 34px;
+  background-color: #222;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.equipmentItems .items {
+  display: flex;
+  justify-content: center;
+}
+
+.equipmentItems .items .item-player {
+  width: 444px;
+  height: 310px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.equipmentItems .items .item-player .player {
+  display: flex;
+  gap: 25px;
+}
+
+.item-player.left .player {
+  flex-direction: row-reverse;
+}
+
+.equipmentItems .items .item-player .player .item {
+  width: 45px;
+  height: 45px;
+  background-color: rgb(225, 225, 225);
+  border-radius: 50%;
+}
+
+.equipmentItems .items .heroes {
+  background-color: #16213d;
+  width: 190px;
+  height: 310px;
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.equipmentItems .items .heroes .hero-player .hero {
+  width: 70px;
+  background-size: cover;
+
+  height: 45px;
+  margin: 15px 0px;
+}
+
+/* --- GAYA DAN ANIMASI UNTUK NOTIFIKASI ITEM BARU --- */
+
+.notification.item-purchase {
+  width: 405px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+}
+
+.item-purchase .hero-icon-container,
+.item-purchase .item-slots-container {
+  height: 85px;
+  /* overflow: hidden; */
+  transition: clip-path 0.5s ease-out; /* Transisi untuk wipe */
+}
+
+/* Lingkaran biru untuk hero */
+.item-purchase .hero-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85px;
+  background-color: #ffffff;
+  position: relative;
+  clip-path: inset(0 100% 0 0); /* Awalnya tersembunyi (wipe dari kiri) */
+}
+.item-purchase.visible .hero-icon-container {
+  clip-path: inset(0 0 0 0); /* Terbuka */
+}
+.item-purchase.hiding .hero-icon-container {
+  clip-path: inset(0 100% 0 0); /* Menghilang ke kanan */
+}
+
+.item-purchase .hero-icon {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Kontainer untuk slot item */
+.item-purchase .item-slots-container {
+  width: 220px;
+  background-color: #16213d;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 30px);
+  grid-template-rows: repeat(2, 30px);
+  gap: 8px;
+  padding: 8px 8px 8px 20px;
+  box-sizing: border-box;
+  align-content: center;
+  clip-path: inset(0 0 0 100%); /* Awalnya tersembunyi (wipe dari kanan) */
+}
+.item-purchase.visible .item-slots-container {
+  clip-path: inset(0 0 0 0); /* Terbuka */
+}
+.item-purchase.hiding .item-slots-container {
+  clip-path: inset(0 0 0 100%); /* Menghilang ke kiri */
+}
+
+.item-purchase .item-slot {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.item-purchase .new-item-animation {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background-size: contain;
+  z-index: 10;
+  right: 120px; /* Atur jarak dari kanan */
+  top: 50%; /* Selalu di tengah secara vertikal */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: transform 1s ease-in-out, opacity 0.4s ease-out;
+}
+
+@keyframes fullItemSequence {
+  /* Tahap 1: Muncul (0s -> 0.5s) */
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  6% {
+    opacity: 1;
+    transform: translateY(0);
+  } /* Muncul di 0.5s */
+
+  /* Tahap 2: Tahan (0.5s -> 7s) */
+  87.5% {
+    opacity: 1;
+    transform: translateY(0);
+  } /* Diam sampai detik ke-7 */
+
+  /* Tahap 3: Menghilang (7s -> 8s) */
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Animasi untuk item baru: fade in, bergerak, lalu fade out */
+@keyframes itemTravel {
+  0% {
+    opacity: 0;
+    transform: translate(250px, 30px) scale(1.5);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(250px, 30px) scale(1.5);
+  }
+  35% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+    transform: var(--target-pos, translate(250px, 30px)) scale(1);
+  }
+  80% {
+    opacity: 0;
+    transform: var(--target-pos, translate(250px, 30px)) scale(1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.item-purchase .item-slots-container.pos-0 {
+  --target-x: -137.5px;
+  --target-y: -47px;
+}
+.item-purchase .item-slots-container.pos-1 {
+  --target-x: -99px;
+  --target-y: -47px;
+}
+.item-purchase .item-slots-container.pos-2 {
+  --target-x: -61.5px;
+  --target-y: -47px;
+}
+.item-purchase .item-slots-container.pos-3 {
+  --target-x: -138px;
+  --target-y: -9px;
+}
+.item-purchase .item-slots-container.pos-4 {
+  --target-x: -99px;
+  --target-y: -9px;
+}
+.item-purchase .item-slots-container.pos-5 {
+  --target-x: -61px;
+  --target-y: -9px;
+}
+
+.item-purchase.layout-right {
+  flex-direction: row-reverse;
+}
+
+/* Membalik posisi kontainer hero */
+.item-purchase.layout-right .hero-icon-container {
+  clip-path: inset(0 0 0 100%); /* Wipe dari kanan */
+}
+.item-purchase.layout-right.visible .hero-icon-container {
+  clip-path: inset(0 0 0 0); /* Terbuka */
+}
+.item-purchase.layout-right.hiding .hero-icon-container {
+  clip-path: inset(0 0 0 100%); /* Menghilang ke kiri */
+}
+
+/* Membalik posisi dan bentuk kontainer item */
+.item-purchase.layout-right .item-slots-container {
+  direction: rtl;
+  padding: 8px 20px 8px 90px; /* Padding di kanan */
+  clip-path: inset(0 100% 0 0); /* Wipe dari kiri */
+}
+.item-purchase.layout-right.visible .item-slots-container {
+  clip-path: inset(0 0 0 0); /* Terbuka */
+}
+.item-purchase.layout-right.hiding .item-slots-container {
+  clip-path: inset(0 100% 0 0); /* Menghilang ke kanan */
+}
+
+/* Membalik posisi awal item baru */
+.item-purchase.layout-right .new-item-animation {
+  left: 120px; /* Gunakan 'left' */
+}
+
+/* Definisikan posisi akhir untuk item tim kanan */
+.item-purchase.layout-right .item-slots-container.pos-0 {
+  --target-x: 138px;
+  --target-y: -47px;
+}
+.item-purchase.layout-right .item-slots-container.pos-1 {
+  --target-x: 100px;
+  --target-y: -47px;
+}
+.item-purchase.layout-right .item-slots-container.pos-2 {
+  --target-x: 62px;
+  --target-y: -47px;
+}
+.item-purchase.layout-right .item-slots-container.pos-3 {
+  --target-x: 138px;
+  --target-y: -9px;
+}
+.item-purchase.layout-right .item-slots-container.pos-4 {
+  --target-x: 100px;
+  --target-y: -9px;
+}
+.item-purchase.layout-right .item-slots-container.pos-5 {
+  --target-x: 62px;
+  --target-y: -9px;
+}
+
+.matchScore {
+  position: absolute;
+  font-family: "Bebas Neue";
+  left: 50px;
+  top: 50px;
+  /* Tambahkan properti ini untuk mengatur posisi anak-anaknya */
+  width: 300px; /* Lebar total saat skor bergeser */
+  height: 90px;
+}
+
+.matchScore .top {
+  background-color: #222;
+  color: white;
+  width: 200px;
+  font-size: 20px;
+  padding: 5px 0;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-left: 50px;
+  clip-path: inset(100% 0 0 0); /* Tersembunyi dari kanan */
+
+  transform-origin: top;
+  opacity: 1;
+  transition: clip-path 0.4s ease-out;
+}
+
+.matchScore.visible .top {
+  /* Animasi Akhir (IN) */
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+}
+
+.matchScore .bottom {
+  display: flex;
+  position: relative; /* Penting untuk positioning absolut anak */
+  height: 50px;
+  width: 100%;
+}
+
+.matchScore .bottom .score-left,
+.matchScore .bottom .score-right {
+  width: 50px;
+  height: 50px;
+  background-color: #16213d;
+  color: white;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  position: absolute; /* Skor saling menimpa di awal */
+  z-index: 2;
+  transition: left 0.5s ease-in-out 0.5s, clip-path 0.5s ease-in-out;
+}
+
+.matchScore .bottom .score-left {
+  clip-path: inset(0 0 100% 0);
+  left: 100px; /* Posisi tengah (150px - 25px) */
+  opacity: 1;
+}
+.matchScore .bottom .score-right {
+  clip-path: inset(100% 0 0 0);
+  left: 150px; /* Posisi tengah (150px - 25px) */
+  opacity: 1;
+}
+
+/* State saat animasi IN berjalan */
+.matchScore.visible .bottom .score-left {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  left: 0; /* Bergeser ke kiri */
+}
+.matchScore.visible .bottom .score-right {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  left: 250px; /* Bergeser ke kanan */
+}
+
+.matchScore .bottom .team-left,
+.matchScore .bottom .team-right {
+  background-image: url("../images/gfxValo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100px;
+  word-break: break-word;
+  line-height: 1; /* Atur line-height agar rapi saat wrap */
+  /* Transisi agar perubahan ukuran font terlihat mulus */
+  transition: font-size 0.3s ease-out;
+  background-color: white;
+  font-size: 30px;
+  position: absolute;
+  z-index: 1; /* Di bawah skor */
+  transition: clip-path 0.5s ease-in-out 0.5s; /* Transisi wipe, delay setelah skor bergeser */
+}
+
+.matchScore .bottom .team-left.shrink-font,
+.matchScore .bottom .team-right.shrink-font {
+  font-size: 22px; /* Ukuran font yang lebih kecil */
+}
+
+.matchScore .bottom .team-left {
+  left: 50px;
+  clip-path: inset(0 0 0 100%); /* Tersembunyi dari kanan */
+}
+.matchScore .bottom .team-right {
+  left: 150px;
+  clip-path: inset(0 100% 0 0); /* Tersembunyi dari kiri */
+}
+
+/* State saat animasi IN berjalan */
+.matchScore.visible .bottom .team-left,
+.matchScore.visible .bottom .team-right {
+  clip-path: inset(0 0 0 0); /* Terlihat penuh */
+}
